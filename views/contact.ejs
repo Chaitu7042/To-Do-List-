@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <script src="https://kit.fontawesome.com/a5bd0f0cfc.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/style.css">
+        
+    </head>
+    <body>
+        <div class="box">
+        <h1 class="h1" >𝓣𝓞 𝓓𝓞 𝓛𝓘𝓢𝓣</h1>
+        <form action="add-task" method="post">    <!--add-contact route -->
+            <input class="input_text" type="text" name="description" placeholder=" ᴇɴᴛᴇʀ ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ" required>
+            <br>
+            <hr>
+            <label for="category" class="category">𝖈𝖍𝖔𝖔𝖘𝖊:</label>
+
+            <select class="categ" name="category" >
+            <option value="personal">𝕨𝕠𝕣𝕜</option>
+            <option value="work">𝕡𝕖𝕣𝕤𝕠𝕟𝕒𝕝</option>
+            <option value="school">𝕤𝕔𝕙𝕠𝕠𝕝</option>
+            <option value="cleaning">𝕔𝕝𝕖𝕒𝕟𝕚𝕟𝕘</option>
+            <option value="other">𝕠𝕥𝕙𝕖𝕣</option>
+            </select>
+            <br>
+            <hr>
+            <input class="date" type="date"  name="date" placeholder="enter due date" required>
+            <input  class="time" type="time" name="time" placeholder="enter time" required>
+
+            <br>
+            <button class="addtask">α∂∂тαѕк</button>
+
+            
+        </form>
+        <ul class="list">
+        <% if (todo){%>
+            <% todo.forEach(i=>{%>
+            <li>
+               <div class="box2">
+                <input class="checkbox" type="checkbox">
+               <span style="margin-right: 20px;font-size: 20px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">description:</span><span class="description"><%=i.description%></span>
+               <br>
+               <span style="margin-right: 20px;font-size: 20px;margin-left: 25px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">category:</span><span class="category"><%= i.category %></span><br>
+               <span style="margin-left: 21px;font-size: 20px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">deadline:</span><span class="date"><%= i.date %></span><%=i.time %>
+               <a href="/delete-task/ <%= i._id%>"><button style="background: transparent;padding-left: 5px;"><i class="icon fa-solid fa-trash"></i></button></a>
+               </div>
+            </li>
+            <%})%> 
+        <% } %>
+    </ul>
+</div>
+    </body>
+</html>
